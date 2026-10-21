@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bono del No Sé — Squad Communications Finance</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: radial-gradient(1200px 800px at 50% -10%, #2b2350 0%, #171231 45%, #0f0b1e 100%);
+    padding: 24px;
+  }
+
+  .hint {
+    color: #c9b8ff;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  .hint span { font-size: 18px; }
+  @keyframes pulse { 0%,100%{opacity:.55} 50%{opacity:1} }
+
+  .scene { perspective: 1400px; width: 100%; max-width: 400px; }
+
+  .card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 5 / 7;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+  .card.flipped { transform: rotateY(180deg); }
+
+  .face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 22px;
+    padding: 34px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.45), inset 0 0 0 2px rgba(255,255,255,0.06);
+    overflow: hidden;
+  }
+
+  /* perforation edge */
+  .face::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    border: 2px dashed rgba(255,255,255,0.22);
+    border-radius: 22px;
+    pointer-events: none;
+  }
+
+  .front {
+    background: linear-gradient(160deg, #f7f3ff 0%, #efe7ff 55%, #e6d9ff 100%);
+    color: #241a45;
+  }
+  .back {
+    background: linear-gradient(160deg, #2b1f63 0%, #231751 55%, #1a113f 100%);
+    color: #f3edff;
+    transform: rotateY(180deg);
+  }
+
+  .tag {
+    align-self: flex-start;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(36,26,69,0.08);
+    color: #4b3586;
+  }
+  .back .tag { background: rgba(255,255,255,0.14); color: #e9dcff; }
+
+  .title {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+  }
+  .title .accent { color: #7b4dff; }
+  .back .title .accent { color: #ffd76a; }
+
+  .sub {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6a5a99;
+    letter-spacing: 0.3px;
+  }
+  .back .sub { color: #b9a6ec; }
+
+  .body-text { font-size: 17px; line-height: 1.55; }
+  .body-text b { font-weight: 800; }
+  .body-text .hl {
+    background: linear-gradient(transparent 62%, rgba(123,77,255,0.22) 62%);
+    padding: 0 2px;
+  }
+  .back .body-text .hl { background: linear-gradient(transparent 62%, rgba(255,215,106,0.28) 62%); }
+
+  .quote {
+    font-style: italic;
+    font-size: 14px;
+    color: #7a68ad;
+    border-left: 3px solid #7b4dff;
+    padding-left: 12px;
+  }
+  .back .quote { color: #c9b8ff; border-left-color: #ffd76a; }
+
+  .foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #6a5a99;
+  }
+  .back .foot { color: #a68fd9; }
+  .foot .barcode {
+    font-family: "Courier New", monospace;
+    letter-spacing: 1px;
+    font-size: 11px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="hint"><span>👆</span> Haz click en el bono para ver la otra cara</div>
+
+  <div class="scene">
+    <div class="card" id="card">
+      <!-- CARA 1: Atrévete a preguntar -->
+      <div class="face front">
+        <div>
+          <span class="tag">Squad Communications Finance</span>
+          <div class="title" style="margin-top:22px">Bono del<br><span class="accent">No Sé</span></div>
+          <div class="sub" style="margin-top:8px">🎟️ No vence · Uso ilimitado</div>
+        </div>
+        <div class="body-text" style="margin-top:6px">
+          <b>Si te toca preguntar,</b><br>
+          <span class="hl">¡atrévete!</span> Haz esa pregunta que te da pena, o di <b>"no sé, déjame revisarlo"</b> sin miedo.
+        </div>
+        <div class="quote">"La duda es contexto, no debilidad."</div>
+        <div class="foot">
+          <span>💛 Finance</span>
+          <span class="barcode">NO-SE-001</span>
+        </div>
+      </div>
+
+      <!-- CARA 2: Contesta con amabilidad -->
+      <div class="face back">
+        <div>
+          <span class="tag">La contrapartida</span>
+          <div class="title" style="margin-top:22px">Respóndele<br><span class="accent">amable</span></div>
+          <div class="sub" style="margin-top:8px">La otra cara del bono 💛</div>
+        </div>
+        <div class="body-text" style="margin-top:6px">
+          <b>Si te toca contestar,</b><br>
+          hazlo <span class="hl">con amabilidad y sin juzgar</span>. Respóndele como te gustaría que te respondieran a ti.
+        </div>
+        <div class="quote">"Nadie nació sabiendo."</div>
+        <div class="foot">
+          <span>🎯 Un solo reto: úsalo una vez</span>
+          <span class="barcode">NO-SE-001</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const card = document.getElementById('card');
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+</script>
+</body>
+</html>
